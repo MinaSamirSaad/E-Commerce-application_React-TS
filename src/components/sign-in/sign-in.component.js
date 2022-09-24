@@ -18,7 +18,7 @@ const SignIn = () => {
   };
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setState({ [name]: value });
+    setState({ ...state ,[name]: value });
   };
   return (
     <div className="sign-in">
