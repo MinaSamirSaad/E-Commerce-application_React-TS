@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import{ useState } from "react";
 import "./sign-in.styles.scss";
+import { signInWithGooglePopUp , creatUserDocumentFromAuth} from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
 const SignIn = () => {
+  const logGoogleUser = async ()=>{
+    const {user} =await signInWithGooglePopUp();
+    const userDocRef = await creatUserDocumentFromAuth(user)
+  }
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -41,6 +46,7 @@ const SignIn = () => {
         />
         <CustomButton type="submit" >sign in</CustomButton>
       </form>
+      <button onClick={logGoogleUser}>Sign In With Google</button>
     </div>
   );
 };
