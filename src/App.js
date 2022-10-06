@@ -4,8 +4,6 @@ import HomePage  from './routes/HomePage/homePage.component';
 import ShopPage from './routes/ShopPage/shopPage.component';
 import Authentcation from './routes/authentication/authentication.component';
 import Header from './routes/header/header.component';
-
-
 function App() {
   return (
     <div className="App">
