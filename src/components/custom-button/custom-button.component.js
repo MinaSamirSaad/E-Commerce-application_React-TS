@@ -7,7 +7,7 @@ const BUTTON_TYPE_CLASSES = {
 const CustomButton = ({children,buttonType,...otherProps}) => {
     return (
         <button className={`custom-button ${BUTTON_TYPE_CLASSES[buttonType]}`} {...otherProps}>
-            {children}
+           {children}
         </button>
     )
 }
