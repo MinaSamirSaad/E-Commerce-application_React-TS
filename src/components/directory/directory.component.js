@@ -3,6 +3,7 @@ import MenuItem from './../menu-item/menu-item.component';
 import "./directory.styles.scss"
 
 const Directory = () => {
+
     const [sections,setSections]=useState([
         {
           title: 'hats',
@@ -39,8 +40,8 @@ const Directory = () => {
       ])
     return (
         <div className="directory-menu">
-            {sections.map(({id,...otherSectionProps})=>
-            <MenuItem key={id} {...otherSectionProps}/>)}
+            {sections.map(({id,title,...otherSectionProps})=>
+            <MenuItem  key={id} title={title} {...otherSectionProps}/>)}
         </div>
     )
 }
