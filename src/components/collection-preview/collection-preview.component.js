@@ -1,4 +1,4 @@
-import "./collection-preview.styles.scss"
+import {CollectionPrviewContainer,Title, Preview} from "./collection-preview.styles.js"
 import ProductCard from '../product-card/Product-card.component';
 import { useNavigate } from "react-router-dom";
 const CollectionPreview= ({title,items}) => {
@@ -7,16 +7,16 @@ const CollectionPreview= ({title,items}) => {
         navigate(`/shop/${title}`);
     }
     return (
-        <div className='collection-preview'>
-            <h1 className="title" onClick={handleNavigate}>{title.toUpperCase()}</h1>
-            <div className="preview">
+        <CollectionPrviewContainer>
+            <Title onClick={handleNavigate}>{title.toUpperCase()}</Title>
+            <Preview>
                 {
                     items
                         .filter((_,idx)=>idx<4)
                         .map((product)=>(<ProductCard key={product.id} {...product}/>))
                 }
-            </div>
-        </div>
+            </Preview>
+        </CollectionPrviewContainer>
     )
 }
 export default CollectionPreview

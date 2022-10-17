@@ -1,4 +1,4 @@
-import './header.styles.scss'
+import {NavigationContainer,LogoContainer,NavLinksContainer,NavLink}from'./header.styles.js'
 import { Fragment, useContext } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import { ReactComponent as Logo } from '../../assets/4.1 crown.svg'
@@ -12,17 +12,17 @@ const Header = () => {
     const {cartOpen}= useContext(CartContext)
     return (
         <Fragment>
-            <div className='header'>
-                <Link to='/' className='logo-container'>
+            <NavigationContainer>
+                <LogoContainer to="/">
                     <Logo className='logo' />
-                </Link>
-                <div className='options'>
-                    <Link className='option' to='/shop'>SHOP</Link>
-                    {currentUser ? (<Link onClick={signOutUser} to='/' className='option' >SIGN OUT</Link>) : (<Link className='option' to='/auth'>SIGN IN</Link>)}
+                </LogoContainer>
+                <NavLinksContainer>
+                    <NavLink to='/shop'>SHOP</NavLink>
+                    {currentUser ? (<NavLink onClick={signOutUser} to='/' className='option' >SIGN OUT</NavLink>) : (<NavLink to='/auth'>SIGN IN</NavLink>)}
                     <CartIcon />
-                </div>
+                </NavLinksContainer>
                 {cartOpen&&<CartDropdown/>}
-            </div>
+            </NavigationContainer>
             <Outlet />
         </Fragment>
     )

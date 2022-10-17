@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import MenuItem from './../menu-item/menu-item.component';
-import "./directory.styles.scss"
+import {DirectoryMenu} from "./directory.styles.js"
 
 const Directory = () => {
 
@@ -26,23 +26,21 @@ const Directory = () => {
         {
           title: 'womens',
           imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-          size: 'large',
           id: 4,
           linkUrl: 'shop/womens'
         },
         {
           title: 'mens',
           imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
-          size: 'large',
           id: 5,
           linkUrl: 'shop/mens'
         }
       ])
     return (
-        <div className="directory-menu">
+        <DirectoryMenu>
             {sections.map(({id,title,...otherSectionProps})=>
             <MenuItem  key={id} title={title} {...otherSectionProps}/>)}
-        </div>
+        </DirectoryMenu>
     )
 }
 export default Directory

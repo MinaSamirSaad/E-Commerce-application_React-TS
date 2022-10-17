@@ -1,13 +1,13 @@
-import './authintication.styles.scss'
+import {SignInAndSignUp} from './authintication.styles.js'
 import SignIn from '../../components/sign-in/sign-in.component'
 import SignUp from '../../components/sign-up/sign-up.component'
 
 const Authentcation = () => {
     return (
-        <div className='sign-in-and-sign-up'>
+        <SignInAndSignUp>
             <SignIn/>
             <SignUp/>
-        </div>
+        </SignInAndSignUp>
     )
 }
 export default Authentcation

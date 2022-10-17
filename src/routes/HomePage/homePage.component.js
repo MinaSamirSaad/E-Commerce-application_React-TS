@@ -1,11 +1,11 @@
-import "./homepage.styles.scss"
+import {HomeContainer} from "./homepage.styles.js"
 import Directory from '../../components/directory/directory.component'
 const HomePage = (props) => {
     console.log(props);
     return (
-        <div className="homepage">
+        <HomeContainer>
             <Directory/>
-        </div>
+        </HomeContainer>
     )
 }
 export default HomePage
