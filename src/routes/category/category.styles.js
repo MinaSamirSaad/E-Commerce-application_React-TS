@@ -5,6 +5,11 @@ display: grid;
 grid-template-columns: repeat(4,1fr);
 column-gap: 20px;
 row-gap: 50px;
+@media screen and (max-width:800px){
+    place-items: center;
+    grid-template-columns:1fr 1fr;
+    grid-gap:15px;
+}
 `
 export const CatigoryHeader = styled.h1`
 text-align: center

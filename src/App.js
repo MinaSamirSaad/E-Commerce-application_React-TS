@@ -1,4 +1,4 @@
-import './App.css';
+import { GlobalStyle } from "./glopal.styles";
 import {Route , Routes} from "react-router-dom"
 import HomePage  from './routes/HomePage/homePage.component';
 import ShopPage from './routes/ShopPage/shopPage.component';
@@ -8,6 +8,7 @@ import CheckOut from './routes/checkOut/checkOut.component';
 function App() {
   return (
     <div className="App">
+      <GlobalStyle/>
       <Routes>
         <Route path ="/" element={<Header/>}>
           <Route index element={<HomePage/>}/>
