@@ -27,7 +27,7 @@ height: 100%;
 width: 100%;
 background-position: center;
 background-size: cover;
-background-image: ${({imageUrl})=>`url(${imageUrl})`}
+background-image: ${({imageUrl})=>`url(${imageUrl})`};
 `
 
 export const MenuItemContainer = styled.div`
