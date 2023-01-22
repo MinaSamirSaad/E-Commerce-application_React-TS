@@ -1,9 +1,12 @@
 import {CheckOutItemContainer,ImageContainer,Image,CustomWidth,Quantity,Arrow,Value,RemoveButton} from "./checkOut-item.styles.js"
-import { useContext } from "react"
-import { CartContext } from './../../contexts/cart.context';
+import { useDispatch } from "react-redux";
+import { addItemToCart ,removeItemFromCart,clearItemFromCart} from './../../store/cart/cart.action';
+import { useSelector } from "react-redux";
+import { selectCartItems } from "../../store/cart/cart.selector.js";
 const CheckOutItem=({cartItem})=>{
+    const cartItems = useSelector(selectCartItems)
+    const dispatch = useDispatch();
  const {name,imageUrl,price,quantity}=cartItem
- const {handleQuantity,removeItem}=useContext(CartContext)
  return(
     <CheckOutItemContainer>
         <ImageContainer>
@@ -11,12 +14,12 @@ const CheckOutItem=({cartItem})=>{
         </ImageContainer>
         <CustomWidth>{name}</CustomWidth>
         <Quantity>
-            <Arrow onClick={()=>handleQuantity("minus",cartItem)}>&#10094;</Arrow>
+            <Arrow onClick={()=>dispatch(removeItemFromCart(cartItems,cartItem))}>&#10094;</Arrow>
             <Value>{quantity}</Value>
-            <Arrow  onClick={()=>handleQuantity("plus",cartItem)}>&#10095;</Arrow>
+            <Arrow  onClick={()=>dispatch(addItemToCart(cartItems,cartItem))}>&#10095;</Arrow>
         </Quantity>
         <CustomWidth> ${price}</CustomWidth>
-        <RemoveButton onClick={()=>removeItem(cartItem)}>&#10005;</RemoveButton>
+        <RemoveButton onClick={()=>dispatch(clearItemFromCart(cartItems,cartItem))}>&#10005;</RemoveButton>
     </CheckOutItemContainer>
  )
 

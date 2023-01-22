@@ -11,7 +11,7 @@ justify-content: center;
 cursor: pointer;
 user-select:none;
 `
-export const ShopingIcon = styled(ShoppongIcon)`
+export const ShoppingIcon = styled(ShoppongIcon)`
 width: 24px;
 height: 24px;
 `

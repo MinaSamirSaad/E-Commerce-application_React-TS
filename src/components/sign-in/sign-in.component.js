@@ -7,7 +7,7 @@ import {
 import FormInput from "../form-input/form-input.component";
 import CustomButton,{BUTTON_TYPE_CLASSES} from "../custom-button/custom-button.component";
 
-const difaultFormFields = {
+const defaultFormFields = {
   email: "",
   password: "",
 };
@@ -15,11 +15,10 @@ const SignIn = () => {
   const logGoogleUser = async () => {
     await signInWithGooglePopUp();
   };
-  const [state, setState] = useState(difaultFormFields);
+  const [state, setState] = useState(defaultFormFields);
   const { email, password } = state;
-  console.log(state);
   const resetFormFields = () => {
-    setState(difaultFormFields);
+    setState(defaultFormFields);
   };
   const handleSubmit = async (event) => {
     event.preventDefault();

@@ -7,10 +7,10 @@ import { ReactComponent as Logo } from '../../assets/4.1 crown.svg'
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 import CartIcon from '../../components/cart-icon/cart-icon.component';
 import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component';
-import { CartContext } from './../../contexts/cart.context';
+import { selectIsCartOpen } from '../../store/cart/cart.selector.js'
 const Header = () => {
     const currentUser = useSelector(selectCurrentUser)
-    const {cartOpen}= useContext(CartContext) 
+    const cartOpen= useSelector(selectIsCartOpen) 
     return (
         <Fragment>
             <NavigationContainer>
