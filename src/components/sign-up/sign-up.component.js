@@ -1,9 +1,7 @@
 import {SignUpForm} from "./sign-up.styles.js"
 import { useState } from "react";
-import {
-    createAuthUserWithEmailAndPassword,
-    creatUserDocumentFromAuth,
-} from "../../utils/firebase/firebase.utils";
+import { useDispatch } from "react-redux";
+import { signUpStart } from "../../store/user/user.action.js";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from '../custom-button/custom-button.component';
 const difaultFormFields = {
@@ -13,6 +11,7 @@ const difaultFormFields = {
     confirmPassword: "",
 };
 const SignUp = () => {
+    const dispatch = useDispatch();
     const [formFields, setFormFields] = useState(difaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
     const resetFormFields = () => {
@@ -26,13 +25,11 @@ const SignUp = () => {
         e.preventDefault();
         if (confirmPassword === password) {
             try {
-                const { user } = await createAuthUserWithEmailAndPassword(
+               dispatch(signUpStart(
                     email,
-                    password
-                );
-                await creatUserDocumentFromAuth(user, {
-                    displayName,
-                });
+                    password,
+                    displayName
+                ))
                 resetFormFields();
             } catch (err) {
                 if (err.code === "auth/email-already-in-case") {

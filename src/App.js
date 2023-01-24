@@ -7,21 +7,12 @@ import ShopPage from "./routes/ShopPage/shopPage.component";
 import Authentcation from "./routes/authentication/authentication.component";
 import Header from "./routes/header/header.component";
 import CheckOut from "./routes/checkOut/checkOut.component";
-import {
-  creatUserDocumentFromAuth,
-  onAuthStateChangedListiners,
-} from "./utils/firebase/firebase.utils";
-import { setCurrentUser } from "./store/user/user.action";
+import { checkUserSession } from "./store/user/user.action";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    onAuthStateChangedListiners((user) => {
-      if (user) {
-        creatUserDocumentFromAuth(user);
-      }
-      dispatch(setCurrentUser(user));
-    });
-  }, []);
+    dispatch(checkUserSession())
+    },[dispatch]);
   return (
     <div className="App">
       <GlobalStyle />

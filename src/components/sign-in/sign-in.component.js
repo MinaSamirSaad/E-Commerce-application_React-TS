@@ -1,19 +1,20 @@
 import { useState } from "react";
-import {SignInForm,ButtonContainer} from "./sign-in.styles.js";
-import {
-  signInWithGooglePopUp,
-  signInAuthUserWithEmailAndPassword,
-} from "../../utils/firebase/firebase.utils";
+import { useDispatch } from "react-redux";
+import { SignInForm, ButtonContainer } from "./sign-in.styles.js";
 import FormInput from "../form-input/form-input.component";
-import CustomButton,{BUTTON_TYPE_CLASSES} from "../custom-button/custom-button.component";
+import CustomButton, {
+  BUTTON_TYPE_CLASSES,
+} from "../custom-button/custom-button.component";
+import { emailSignInStart, googleSignInStart } from "../../store/user/user.action.js";
 
 const defaultFormFields = {
   email: "",
   password: "",
 };
 const SignIn = () => {
-  const logGoogleUser = async () => {
-    await signInWithGooglePopUp();
+  const dispatch = useDispatch()
+  const signInWithGoogle = async () => {
+   return dispatch(googleSignInStart())
   };
   const [state, setState] = useState(defaultFormFields);
   const { email, password } = state;
@@ -23,10 +24,7 @@ const SignIn = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
+      dispatch(emailSignInStart(email, password));
       resetFormFields();
     } catch (err) {
       if (err.code === "auth/user-not-found") {
@@ -67,7 +65,7 @@ const SignIn = () => {
           <CustomButton type="submit">Sign In</CustomButton>
           <CustomButton
             type="button"
-            onClick={logGoogleUser}
+            onClick={signInWithGoogle}
             buttonType={BUTTON_TYPE_CLASSES.google}
           >
             Sign In With Google
