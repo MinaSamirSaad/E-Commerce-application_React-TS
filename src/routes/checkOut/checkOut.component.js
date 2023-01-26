@@ -2,7 +2,7 @@ import {CheckOutContainer,CheckoutHeader,HeaderBlock,TotalPriceSpan} from "./Che
 import CheckOutItem from "../../components/checkOut-item/checkOut-item.component";
 import { useSelector } from "react-redux";
 import { selectCartTotal,selectCartItems } from './../../store/cart/cart.selector';
-
+import PaymentForm from "../../components/payment-form/payment-form.component.jsx";
 const CheckOut =()=>{
 const cartItems=useSelector(selectCartItems)
 const totalPrice=useSelector(selectCartTotal)
@@ -27,6 +27,7 @@ return(
         </CheckoutHeader>
         {cartItems.map((cartItem)=><CheckOutItem key={cartItem.id} cartItem={cartItem}/>)}
         <TotalPriceSpan >Total:${totalPrice}</TotalPriceSpan>
+        <PaymentForm/>
     </CheckOutContainer>
 )
 }
