@@ -33,6 +33,12 @@ color: white;
   background-color: #357ae8;
   border: none;
 }
+@media screen and (max-width:800px) {
+  font-size : 13px;
+}
+@media screen and (max-width:400px) {
+  padding : 0 20px;
+}
 `
 export const InvertedButton = styled(BaseButton)`
 background-color: white;
